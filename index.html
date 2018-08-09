@@ -1,0 +1,77 @@
+<!DOCTYPEL html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="row title">
+			<div class="column-4">
+
+			</div>
+			<div class="column-4">
+				<header><h1>Tic-Tac-Toe</h1></header>
+			</div>
+			<div class="column-4">
+				<div class="points">
+					<p>Score</p>
+					<p>X: <span id="xScore">0</span> O: <span id="oScore">0</span></p>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="modal-start">
+			<div class="modal-backdrop"></div>
+			<div class="modal-body">
+				<h2>X and O</h2>
+					<p>Choose a Team</p>
+						<label for="xRadio">X
+							<input type="radio" name="team" id="xRadio" value="X" >
+							<span class="checkmark"></span>
+						</label>
+						<label for="oRadio">O
+							<input type="radio" name="team" id="oRadio" value="O">
+							<span class="checkmark"></span>
+						</label>
+					<p>Choose a Difficulty</p>
+						<label for="easyRadio">Easy
+							<input type="radio" name="difficulty" id="easyRadio" value="easy">
+							<span class="checkmark"></span>
+						</label>
+						<label for="hardRadio">Hard
+							<input type="radio" name="difficulty" id="hardRadio" value="hard">
+							<span class="checkmark"></span>
+						</label>
+					
+					<button type="submit" id="submit">Go</button>
+			</div>
+		</div>
+
+		<div class="modal" id="modal-end">
+			<div class="modal-backdrop"></div>
+			<div class="modal-body">
+				<h2><span></span></h2>
+				<button id="new-game">New Game</button>
+			</div>
+		</div>
+
+		<div class="hash">
+			<div class="row first">
+				<div class="column-4 alpha" id="1" data-value="false"><p>&nbsp</p></div>
+				<div class="column-4 beta" id="2" data-value="false"><p>&nbsp</p></div>
+				<div class="column-4 charlie" id="3" data-value="false"><p>&nbsp</p></div>
+			</div>
+			<div class="row second">
+				<div class="column-4 alpha" id="4" data-value="false"><p>&nbsp</p></div>
+				<div class="column-4 beta" id="5" data-value="false"><p>&nbsp</p></div>
+				<div class="column-4 charlie" id="6" data-value="false"><p>&nbsp</p></div>
+			</div>
+			<div class="row third">
+				<div class="column-4 alpha" id="7" data-value="false"><p>&nbsp</p></div>
+				<div class="column-4 beta" id="8" data-value="false"><p>&nbsp</p></div>
+				<div class="column-4 charlie" id="9" data-value="false"><p>&nbsp</p></div>
+			</div>
+		</div>
+		<script src="scripts.js"></script>
+	</body>
+</html>
+

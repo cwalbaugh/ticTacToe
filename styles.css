@@ -1,0 +1,210 @@
+/* Base font size scales slightly with the viewport */
+:root {
+	box-sizing: border-box;
+	--color-main: #49608D;
+	font-family: Roboto;
+}
+
+/*universally inherit border-box from :root */
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+/* Base Styles ==================================*/
+body {
+	background-color: var(--color-main);
+}
+h1 {
+	text-align: center;
+	color: white;
+}
+.points > p {
+	text-align: center;
+	color: white;
+}
+
+
+[class*="column-"] > p {
+	padding: 10vmin; 
+	margin: 0;
+	text-align: center;
+}
+.hash {
+	width: 80vmin;
+	height: 80vmin;
+	margin: auto;
+}
+.row {
+	height: 33%;
+}
+/* draw hash with borders */
+.first, .second {
+	border-bottom: 8px solid white;
+}
+.alpha, .beta {
+	border-right: 8px solid white;
+}
+/* animation of marks */
+svg > * {
+	stroke-dasharray: 100;
+	stroke-dashoffset: 100;
+	animation: dash 1s linear forwards;
+}
+
+@keyframes dash {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+
+
+/* modal styling ============================================*/
+.modal-start {
+	display: block;
+}
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+}
+.modal-body {
+	position: fixed;
+	top: 3em;
+	right: 20%;
+	left: 20%;
+	padding: 2em 3em;
+	background-color: #eee;
+	overflow: auto;
+}
+.modal-close {
+	cursor: pointer;
+}
+#modal-end {
+	display: none;
+}
+button {
+	border: solid 1px var(--color-main);
+	border-radius: 3px;
+	font-family: inherit;
+	background-color: #eee;
+	display: block;
+	margin-top: 1em;
+}
+/* radio button styling */
+/* Heydon Pickering */
+/* https://www.sitepoint.com/replacing-radio-buttons-without-replacing-radio-buttons/ */
+
+[type="radio"] {
+  border: 0; 
+  clip: rect(0 0 0 0); 
+  height: 1px; margin: -1px; 
+  overflow: hidden; 
+  padding: 0; 
+  position: absolute; 
+  width: 1px;
+}
+
+/* One radio button per line */
+label {
+  display: block;
+  cursor: pointer;
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+[type="radio"] + span {
+	margin-left: .5em;
+}
+
+/* the basic, unchecked style */
+[type="radio"] + span:before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.25em;
+  border-radius: 1em;
+  border: 0.125em solid #eee;
+  box-shadow: 0 0 0 0.15em #000;
+  margin-right: 0.75em;
+  transition: 0.5s ease all;
+}
+
+/* the checked style using the :checked pseudo class */
+[type="radio"]:checked + span:before {
+  background: var(--color-main);
+  box-shadow: 0 0 0 0.25em #000;
+}
+
+/* grid and layout styling ==================================*/
+.row {
+	margin-left: calc(var(--gutter-size)/2);
+	margin-right: calc(var(--gutter-size)/2);
+}
+
+/*A clearfix for the row so we don't have to add a clearfix class every time we add a row'*/
+/*The row is slimply a clearfix container for the columns*/
+.row::after {
+	content: " ";
+	display: block;
+	clear: both;
+}
+
+/*Float all of the columns to the left with an attribute selector that targets elements based on their class attributes. '*=' incluedes any values that have the 'column-' string*/
+/*Setting the left and right padding to 0.75em makes for gutters of 1.5em*/
+/*Setting margin-top to 0 overrides the lobotomized owl*/
+[class*="column-"] {
+	float: left;
+	margin-top: 0;
+}
+
+.column-1 { width: 8.3333%; }
+.column-2 { width: 16.6667%; }
+.column-3 { width: 25%; }
+.column-4 { width: 33.3333%; }
+.column-5 { width: 41.6667%; }
+.column-6 { width: 50%; }
+.column-7 { width: 58.3333%; }
+.column-8 { width: 66.6667%; }
+.column-9 { width: 75%; }
+.column-10 { width: 83.3333%; }
+.column-11 { width: 91.6667%; }
+.column-12 { width: 100%; }
+
+
+
+
+@supports (display: flex) {
+	.row {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	[class*="column-"] {
+		display: flex;
+	}
+	.column-3 {
+		flex-basis: 25%;
+	}
+	.column-4 {
+		flex-basis: 33.3333%;
+	}
+
+	.column-6 {
+		flex-basis: 50%;
+	}
+		.column-8 {
+		flex-basis: 66.6667%;
+	}
+
+
+	[class*="column-"] > * {
+		flex-grow: 1;
+	}
+}
